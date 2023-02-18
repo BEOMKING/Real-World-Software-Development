@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Month;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BankTransactionAnalyzer {
 
@@ -18,24 +17,10 @@ public class BankTransactionAnalyzer {
 
         final BankStatementCSVParser bankStatementCSVParser = new BankStatementCSVParser();
         final List<BankTransaction> bankTransactions = bankStatementCSVParser.parseLinesFromCSV(lines);
+        final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
-        System.out.println("Total Amount " + calculateTotalAmount(bankTransactions));
-        System.out.println("Transactions in January" + selectInMonth(bankTransactions, Month.JANUARY));
-    }
-
-    private static List<BankTransaction> selectInMonth(final List<BankTransaction> bankTransactions, final Month month) {
-        return bankTransactions.stream()
-                .filter(bankTransaction -> bankTransaction.getDate().getMonth().equals(month))
-                .collect(Collectors.toList());
-    }
-
-    private static double calculateTotalAmount(final List<BankTransaction> bankTransactions) {
-        double total = 0d;
-
-        for (final BankTransaction bankTransaction : bankTransactions) {
-            total += bankTransaction.getAmount();
-        }
-
-        return total;
+        System.out.println("Total Amount " + bankStatementProcessor.calculateTotalAmount());
+        System.out.println("Transactions in January " + bankStatementProcessor.selectInMonth(Month.JANUARY));
+        System.out.println("Transactions in Category " + bankStatementProcessor.calculateTotalForCategory("Foodƒ"));
     }
 }
