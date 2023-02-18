@@ -6,6 +6,6 @@ public class BankTransactionAnalyzer {
 
     public static void main(String[] args) throws IOException {
         BankStatementAnalyzer bankStatementAnalyzer = new BankStatementAnalyzer();
-        bankStatementAnalyzer.analyze("file", new BankStatementCSVParser());
-    }ƒ
+        bankStatementAnalyzer.analyze(args[0], new BankStatementCSVParser());
+    }
 }
