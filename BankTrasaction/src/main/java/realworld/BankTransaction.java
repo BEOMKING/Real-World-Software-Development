@@ -1,6 +1,9 @@
 package realworld;
 
+import realworld.parser.Notification;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 public class BankTransaction {
@@ -24,6 +27,40 @@ public class BankTransaction {
 
     public String getDescription() {
         return description;
+    }
+
+    public void validation() {
+        if (validate().hasErrors()) {
+            throw new IllegalArgumentException(validate().errorMessage());
+        }
+    }
+
+    public Notification validate() {
+        final Notification notification = new Notification();
+
+        if (date == null || date.toString().isEmpty()) {
+            notification.addError("date is required");
+        }
+
+        try {
+            LocalDate.parse(date.toString());
+        } catch (DateTimeParseException e) {
+            notification.addError("date format is invalid");
+        }
+
+        if (amount <= 0) {
+            notification.addError("amount must be greater than zero");
+        }
+
+        if (description == null || description.isEmpty()) {
+            notification.addError("description is required");
+        }
+
+        if (this.description.length() >= 100) {
+            notification.addError("The description is too long");
+        }
+
+        return notification;
     }
 
     @Override
