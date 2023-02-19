@@ -1,4 +1,6 @@
-package realworld;
+package realworld.parser;
+
+import realworld.BankTransaction;
 
 import java.util.List;
 

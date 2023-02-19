@@ -1,5 +1,7 @@
 package realworld;
 
+import realworld.parser.BankStatementCSVParser;
+
 import java.io.IOException;
 
 public class BankTransactionAnalyzer {

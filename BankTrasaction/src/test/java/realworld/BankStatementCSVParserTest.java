@@ -1,7 +1,8 @@
 package realworld;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import realworld.parser.BankStatementCSVParser;
+import realworld.parser.BankStatementParser;
 
 import java.time.LocalDate;
 import java.time.Month;
