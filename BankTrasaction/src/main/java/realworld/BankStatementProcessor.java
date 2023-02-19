@@ -11,6 +11,14 @@ public class BankStatementProcessor {
         this.bankTransactions = bankTransactions;
     }
 
+    /**
+     * 개방 폐쇄 원칙 적용된 케이스
+     * 메서드 바디의 내용을 변경하지 않고도 새로운 동작을 추가할 수 있다.
+     * 변경에는 닫혀있고 확장에는 열려있다.
+     *
+     * @param summarizer
+     * @return
+     */
     public double summarizeTransactions(BankTransactionSummarizer summarizer) {
         double result = 0;
 
