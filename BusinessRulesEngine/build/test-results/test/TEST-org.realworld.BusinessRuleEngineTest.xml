@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.realworld.BusinessRuleEngineTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-20T14:32:45" hostname="bjp-Macmini.local" time="1.44">
+<testsuite name="org.realworld.BusinessRuleEngineTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-20T15:21:40" hostname="bjp-Macmini.local" time="1.641">
   <properties/>
-  <testcase name="run_메서드는_엔진을_실행시킨다()" classname="org.realworld.BusinessRuleEngineTest" time="1.328"/>
-  <testcase name="addAction_메서드는_액션이_주어지면_액션을_추가한다()" classname="org.realworld.BusinessRuleEngineTest" time="0.098"/>
-  <testcase name="count_메서드는_액션의_개수를_리턴한다()" classname="org.realworld.BusinessRuleEngineTest" time="0.003"/>
+  <testcase name="run_메서드는_엔진을_실행시킨다()" classname="org.realworld.BusinessRuleEngineTest" time="1.496"/>
+  <testcase name="addAction_메서드는_액션이_주어지면_액션을_추가한다()" classname="org.realworld.BusinessRuleEngineTest" time="0.114"/>
+  <testcase name="count_메서드는_액션의_개수를_리턴한다()" classname="org.realworld.BusinessRuleEngineTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
