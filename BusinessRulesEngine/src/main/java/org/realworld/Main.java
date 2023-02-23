@@ -10,14 +10,19 @@ public class Main {
             var dealStage = Stage.valueOf(facts.getFacts("stage"));
             var amount = Double.parseDouble(facts.getFacts("amount"));
 
-            if (Stage.LEAD.equals(dealStage)) {
-                forecastedAmount = amount * 0.2;
-            } else if (Stage.EVALUATING.equals(dealStage)) {
-                forecastedAmount = amount * 0.5;
-            } else if (Stage.INTERESTED.equals(dealStage)) {
-                forecastedAmount = amount * 0.8;
-            } else {
-                forecastedAmount = amount;
+            switch (dealStage) {
+                case LEAD:
+                    forecastedAmount = amount * 0.2;
+                    break;
+                case EVALUATING:
+                    forecastedAmount = amount * 0.5;
+                    break;
+                case INTERESTED:
+                    forecastedAmount = amount * 0.8;
+                    break;
+                case CLOSED:
+                    forecastedAmount = amount;
+                    break;
             }
 
             facts.addFacts("forecastedAmount", String.valueOf(forecastedAmount));
