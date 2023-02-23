@@ -2,16 +2,25 @@ package org.realworld;
 
 public class Main {
     public static void main(String[] args) {
-        final Facts env = new Facts();
-        final BusinessRuleEngine businessRuleEngine = new BusinessRuleEngine(env);
+        final var env = new Facts();
+        final var businessRuleEngine = new BusinessRuleEngine(env);
 
         businessRuleEngine.addAction(facts -> {
-            final String jobTitle = facts.getFacts("jobTitle");
+            var forecastedAmount = 0.0;
+            var dealStage = Stage.valueOf(facts.getFacts("stage"));
+            var amount = Double.parseDouble(facts.getFacts("amount"));
 
-            if ("CEO".equals(jobTitle)) {
-                final String name = facts.getFacts("name");
-                Mailer.sendEmail("email", "customer" + name);
+            if (Stage.LEAD.equals(dealStage)) {
+                forecastedAmount = amount * 0.2;
+            } else if (Stage.EVALUATING.equals(dealStage)) {
+                forecastedAmount = amount * 0.5;
+            } else if (Stage.INTERESTED.equals(dealStage)) {
+                forecastedAmount = amount * 0.8;
+            } else {
+                forecastedAmount = amount;
             }
+
+            facts.addFacts("forecastedAmount", String.valueOf(forecastedAmount));
         });
 
         businessRuleEngine.run();
