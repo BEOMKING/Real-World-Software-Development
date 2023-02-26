@@ -27,8 +27,9 @@ public class Main {
         facts.addFacts("name", "Bob");
         facts.addFacts("jobTitle", "CEO");
 
-        final Condition condition = (f) -> "CEO".equals(f.getFacts("jobTitle"));
-        final Action action = (f) -> Mailer.sendEmail("email", "wow" + facts.getFacts("name"));
-        final Rule rule = new DefaultRule(condition, action);
+        Rule rule = RuleBuilder.builder()
+                .when(f -> "CEO".equals(f.getFacts("jobTitle")))
+                .then(f -> Mailer.sendEmail("email", "wow" + facts.getFacts("name")))
+                .build();
     }
 }

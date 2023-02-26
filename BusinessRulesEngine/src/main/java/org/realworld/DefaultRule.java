@@ -1,5 +1,10 @@
 package org.realworld;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 public class DefaultRule implements Rule {
     private final Condition condition;
     private final Action action;
